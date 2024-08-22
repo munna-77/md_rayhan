@@ -1,85 +1,98 @@
-const board = document.getElementById('board');
-const cells = document.querySelectorAll('.cell');
-const restartButton = document.getElementById('restart');
-let currentPlayer = 'X';
-let gameActive = true;
-let gameState = ['', '', '', '', '', '', '', '', ''];
+const calculator = {
+    displayValue: '0',
+    firstOperand: null,
+    waitingForSecondOperand: false,
+    operator: null,
+};
 
-const winningConditions = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6]
-];
+function inputDigit(digit) {
+    const { displayValue, waitingForSecondOperand } = calculator;
 
-function handleCellClick(event) {
-    const clickedCell = event.target;
-    const clickedCellIndex = parseInt(clickedCell.getAttribute('data-index'));
+    if (waitingForSecondOperand === true) {
+        calculator.displayValue = digit;
+        calculator.waitingForSecondOperand = false;
+    } else {
+        calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+    }
+}
 
-    if (gameState[clickedCellIndex] !== '' || !gameActive) {
+function inputDecimal(dot) {
+    if (calculator.waitingForSecondOperand === true) return;
+
+    if (!calculator.displayValue.includes(dot)) {
+        calculator.displayValue += dot;
+    }
+}
+
+function handleOperator(nextOperator) {
+    const { firstOperand, displayValue, operator } = calculator;
+    const inputValue = parseFloat(displayValue);
+
+    if (operator && calculator.waitingForSecondOperand) {
+        calculator.operator = nextOperator;
         return;
     }
 
-    gameState[clickedCellIndex] = currentPlayer;
-    clickedCell.innerHTML = currentPlayer;
+    if (firstOperand == null && !isNaN(inputValue)) {
+        calculator.firstOperand = inputValue;
+    } else if (operator) {
+        const result = performCalculationoperator;
 
-    if (checkWin()) {
-        alert(currentPlayer + ' has won!');
-        gameActive = false;
+        calculator.displayValue = String(result);
+        calculator.firstOperand = result;
+    }
+
+    calculator.waitingForSecondOperand = true;
+    calculator.operator = nextOperator;
+}
+
+const performCalculation = {
+    '/': (firstOperand, secondOperand) => firstOperand / secondOperand,
+    '*': (firstOperand, secondOperand) => firstOperand * secondOperand,
+    '+': (firstOperand, secondOperand) => firstOperand + secondOperand,
+    '-': (firstOperand, secondOperand) => firstOperand - secondOperand,
+    '=': (firstOperand, secondOperand) => secondOperand,
+};
+
+function resetCalculator() {
+    calculator.displayValue = '0';
+    calculator.firstOperand = null;
+    calculator.waitingForSecondOperand = false;
+    calculator.operator = null;
+}
+
+function updateDisplay() {
+    const display = document.querySelector('.calculator-screen');
+    display.value = calculator.displayValue;
+}
+
+updateDisplay();
+
+const keys = document.querySelector('.calculator-keys');
+keys.addEventListener('click', (event) => {
+    const { target } = event;
+    if (!target.matches('button')) {
         return;
     }
 
-    if (gameState.includes('')) {
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        if (currentPlayer === 'O') {
-            botMove();
-        }
-    } else {
-        alert('Game is a draw!');
-        gameActive = false;
+    if (target.classList.contains('operator')) {
+        handleOperator(target.value);
+        updateDisplay();
+        return;
     }
-}
 
-function botMove() {
-    let availableCells = [];
-    gameState.forEach((cell, index) => {
-        if (cell === '') {
-            availableCells.push(index);
-        }
-    });
-
-    const randomIndex = availableCells[Math.floor(Math.random() * availableCells.length)];
-    gameState[randomIndex] = 'O';
-    cells[randomIndex].innerHTML = 'O';
-
-    if (checkWin()) {
-        alert('O has won!');
-        gameActive = false;
-    } else {
-        currentPlayer = 'X';
+    if (target.classList.contains('decimal')) {
+        inputDecimal(target.value);
+        updateDisplay();
+        return;
     }
-}
 
-function checkWin() {
-    for (let i = 0; i < winningConditions.length; i++) {
-        const [a, b, c] = winningConditions[i];
-        if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
-            return true;
-        }
+    if (target.classList.contains('all-clear')) {
+        resetCalculator();
+        updateDisplay();
+        return;
     }
-    return false;
-}
 
-function restartGame() {
-    gameActive = true;
-    currentPlayer = 'X';
-    gameState = ['', '', '', '', '', '', '', '', ''];
-    cells.forEach(cell => cell.innerHTML = '');
-}
-
-cells.forEach(cell => cell.addEventListener('click', handleCellClick));
-restartButton.addEventListener('click', restartGame);
+    inputDigit(target.value);
+    updateDisplay();
+});

@@ -14,7 +14,8 @@ function clearDisplay() {
 function calculateResult() {
     const display = document.getElementById('display');
     try {
-        display.innerText = eval(display.innerText);
+        // Use a safer approach instead of eval
+        display.innerText = new Function('return ' + display.innerText)();
     } catch (error) {
         display.innerText = 'Error';
     }

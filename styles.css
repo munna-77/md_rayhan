@@ -31,6 +31,11 @@ body {
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    grid-template-areas:
+        "btn-clear btn-div btn-mul btn-sub"
+        "btn-7 btn-8 btn-9 btn-add"
+        "btn-4 btn-5 btn-6 btn-equal"
+        "btn-1 btn-2 btn-3 btn-zero";
     gap: 1px;
 }
 
@@ -57,23 +62,30 @@ body {
     grid-column: span 2;
 }
 
-.btn-operator {
-    background: #ff6f61;
-    color: white;
+.btn-clear {
+    grid-area: btn-clear;
 }
 
-.btn-operator:hover {
-    background: #ff4f43;
+.btn-div {
+    grid-area: btn-div;
 }
 
-.btn-operator:active {
-    background: #ff3b2a;
+.btn-mul {
+    grid-area: btn-mul;
+}
+
+.btn-sub {
+    grid-area: btn-sub;
+}
+
+.btn-add {
+    grid-area: btn-add;
 }
 
 .btn-equal {
+    grid-area: btn-equal;
     background: #4caf50;
     color: white;
-    grid-column: span 2;
     border-radius: 8px;
 }
 
@@ -83,4 +95,40 @@ body {
 
 .btn-equal:active {
     background: #388e3c;
+}
+
+.btn-7 {
+    grid-area: btn-7;
+}
+
+.btn-8 {
+    grid-area: btn-8;
+}
+
+.btn-9 {
+    grid-area: btn-9;
+}
+
+.btn-4 {
+    grid-area: btn-4;
+}
+
+.btn-5 {
+    grid-area: btn-5;
+}
+
+.btn-6 {
+    grid-area: btn-6;
+}
+
+.btn-1 {
+    grid-area: btn-1;
+}
+
+.btn-2 {
+    grid-area: btn-2;
+}
+
+.btn-3 {
+    grid-area: btn-3;
 }

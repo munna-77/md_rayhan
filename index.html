@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Game Zone</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Kids Game Zone</h1>
+        <nav>
+            <ul>
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#games">Games</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="profile">
+            <h2>Create Your Profile</h2>
+            <form id="profileForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <button type="submit">Create Profile</button>
+            </form>
+        </section>
+        <section id="games">
+            <h2>Games</h2>
+            <div class="game" id="ticTacToe">
+                <h3>Tic Tac Toe</h3>
+                <button onclick="startGame('ticTacToe')">Play</button>
+            </div>
+            <div class="game" id="snakes">
+                <h3>Snakes</h3>
+                <button onclick="startGame('snakes')">Play</button>
+            </div>
+            <!-- Add more games here -->
+        </section>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+</html>

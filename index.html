@@ -3,37 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Black Calculator</title>
+    <title>3D Sky Blue Calculator</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="calculator">
-        <div class="display" id="display">0</div>
+        <div class="display" id="display" aria-live="polite">0</div>
         <div class="buttons">
-            <button class="btn btn-clear" onclick="clearDisplay()">C</button>
-            <button class="btn btn-backspace" onclick="backspace()">⌫</button>
-            <button class="btn btn-root" onclick="calculateSquareRoot()">√</button>
-            <button class="btn btn-div" onclick="appendToDisplay('/')">/</button>
+            <button class="btn btn-clear" id="clear">C</button>
+            <button class="btn btn-backspace" id="backspace">⌫</button>
+            <button class="btn btn-root" id="squareRoot">√</button>
+            <button class="btn btn-div" id="divide">/</button>
 
-            <button class="btn btn-7" onclick="appendToDisplay('7')">7</button>
-            <button class="btn btn-8" onclick="appendToDisplay('8')">8</button>
-            <button class="btn btn-9" onclick="appendToDisplay('9')">9</button>
-            <button class="btn btn-mul" onclick="appendToDisplay('*')">*</button>
+            <button class="btn" id="seven">7</button>
+            <button class="btn" id="eight">8</button>
+            <button class="btn" id="nine">9</button>
+            <button class="btn btn-mul" id="multiply">*</button>
 
-            <button class="btn btn-4" onclick="appendToDisplay('4')">4</button>
-            <button class="btn btn-5" onclick="appendToDisplay('5')">5</button>
-            <button class="btn btn-6" onclick="appendToDisplay('6')">6</button>
-            <button class="btn btn-sub" onclick="appendToDisplay('-')">-</button>
+            <button class="btn" id="four">4</button>
+            <button class="btn" id="five">5</button>
+            <button class="btn" id="six">6</button>
+            <button class="btn btn-sub" id="subtract">-</button>
 
-            <button class="btn btn-1" onclick="appendToDisplay('1')">1</button>
-            <button class="btn btn-2" onclick="appendToDisplay('2')">2</button>
-            <button class="btn btn-3" onclick="appendToDisplay('3')">3</button>
-            <button class="btn btn-add" onclick="appendToDisplay('+')">+</button>
+            <button class="btn" id="one">1</button>
+            <button class="btn" id="two">2</button>
+            <button class="btn" id="three">3</button>
+            <button class="btn btn-add" id="add">+</button>
 
-            <button class="btn btn-zero" onclick="appendToDisplay('0')">0</button>
-            <button class="btn btn-dot" onclick="appendToDisplay('.')">.</button>
-            <button class="btn btn-percent" onclick="calculatePercentage()">%</button>
-            <button class="btn btn-equal" onclick="calculateResult()">=</button>
+            <button class="btn btn-zero" id="zero">0</button>
+            <button class="btn btn-dot" id="dot">.</button>
+            <button class="btn btn-percent" id="percent">%</button>
+            <button class="btn btn-equal" id="equal">=</button>
         </div>
     </div>
     <script src="script.js"></script>

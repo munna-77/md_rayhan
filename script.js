@@ -1,14 +1,68 @@
+let isResultDisplayed = false;
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const value = button.innerText;
+            handleButtonPress(value);
+        });
+    });
+
+    document.getElementById('clear').addEventListener('click', clearDisplay);
+    document.getElementById('backspace').addEventListener('click', backspace);
+    document.getElementById('squareRoot').addEventListener('click', calculateSquareRoot);
+    document.getElementById('percent').addEventListener('click', calculatePercentage);
+    document.getElementById('equal').addEventListener('click', calculateResult);
+
+    document.addEventListener('keydown', handleKeyPress);
+});
+
+function handleButtonPress(value) {
+    if (!isNaN(value) || value === '.') {
+        appendToDisplay(value);
+    } else if (value === 'C') {
+        clearDisplay();
+    } else if (value === '⌫') {
+        backspace();
+    } else if (value === '√') {
+        calculateSquareRoot();
+    } else if (value === '%') {
+        calculatePercentage();
+    } else if (value === '=') {
+        calculateResult();
+    } else {
+        appendToDisplay(value);
+    }
+}
+
+function handleKeyPress(event) {
+    const key = event.key;
+    if (!isNaN(key) || key === '.') {
+        appendToDisplay(key);
+    } else if (key === 'Enter') {
+        calculateResult();
+    } else if (key === 'Backspace') {
+        backspace();
+    } else if (key === 'Escape') {
+        clearDisplay();
+    } else if (['+', '-', '*', '/'].includes(key)) {
+        appendToDisplay(key);
+    }
+}
+
 function appendToDisplay(value) {
     const display = document.getElementById('display');
-    if (display.innerText === '0' && value !== '.') {
+    if (isResultDisplayed) {
         display.innerText = value;
+        isResultDisplayed = false;
     } else {
-        display.innerText += value;
+        display.innerText = (display.innerText === '0' && value !== '.') ? value : display.innerText + value;
     }
 }
 
 function clearDisplay() {
     document.getElementById('display').innerText = '0';
+    isResultDisplayed = false;
 }
 
 function backspace() {
@@ -26,6 +80,7 @@ function calculateResult() {
         if (isValidExpression(display.innerText)) {
             const result = new Function('return ' + display.innerText)();
             display.innerText = result;
+            isResultDisplayed = true;
         } else {
             display.innerText = 'Error';
         }
@@ -45,6 +100,7 @@ function calculateSquareRoot() {
             } else {
                 const result = Math.sqrt(currentValue);
                 display.innerText = result;
+                isResultDisplayed = true;
             }
         } else {
             display.innerText = 'Error';
@@ -58,24 +114,12 @@ function calculatePercentage() {
     const display = document.getElementById('display');
     try {
         const expression = display.innerText;
-        // Find the last operator in the expression
-        const lastOperatorIndex = Math.max(
-            expression.lastIndexOf('+'),
-            expression.lastIndexOf('-'),
-            expression.lastIndexOf('*'),
-            expression.lastIndexOf('/')
-        );
-
-        let percentageValue;
-        if (lastOperatorIndex > -1) {
-            const baseValue = parseFloat(expression.slice(0, lastOperatorIndex));
-            const percentValue = parseFloat(expression.slice(lastOperatorIndex + 1));
-            percentageValue = baseValue * (percentValue / 100);
-            display.innerText = expression.slice(0, lastOperatorIndex + 1) + percentageValue;
+        if (isValidExpression(expression)) {
+            const result = parseFloat(eval(expression)) / 100;
+            display.innerText = result;
+            isResultDisplayed = true;
         } else {
-            const value = parseFloat(expression);
-            percentageValue = value / 100;
-            display.innerText = percentageValue;
+            display.innerText = 'Error';
         }
     } catch (error) {
         display.innerText = 'Error';
@@ -83,5 +127,5 @@ function calculatePercentage() {
 }
 
 function isValidExpression(expression) {
-    return /^[0-9+\-*/.()]+$/.test(expression) && !/[\-*/+]$/.test(expression);
+    return /^[\d\+\-\*\/\.\(\)\s]+$/.test(expression);
 }

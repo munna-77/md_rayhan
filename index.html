@@ -10,7 +10,7 @@
     <header class="header">
         <div class="container">
             <h1 class="glow-text">MD RAYHAN</h1>
-            <p class="subtitle">Creative Graphic Designer</p>
+            <p class="subtitle">Creative Graphic Designer & English Honours Student</p>
         </div>
     </header>
 
@@ -25,9 +25,26 @@
     <section id="about" class="section">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <p>
-                Hi, I'm <strong>MD RAYHAN</strong>, a passionate graphic designer dedicated to bringing creative ideas to life. I specialize in logo design, branding, and digital illustrations. Let's collaborate to create stunning visuals!
-            </p>
+            <div class="about-content">
+                <div class="profile-photo">
+                    <img src="images/profile.jpg" alt="MD RAYHAN">
+                </div>
+                <div class="about-text">
+                    <p>
+                        Hi, I'm <strong>MD RAYHAN</strong>, a passionate graphic designer and an English Honours student. With a creative mindset and a love for design, I specialize in logo design, branding, and digital illustrations. 
+                        Currently, I am pursuing my studies in English Honours while also honing my design skills. Let's collaborate to create stunning visuals!
+                    </p>
+                    <p>
+                        I work with a powerful PC setup featuring:
+                        <ul>
+                            <li>Intel i5-12400 processor</li>
+                            <li>16GB RAM</li>
+                            <li>GTX-1660 Super OC graphics card</li>
+                            <li>Windows 11</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -36,22 +53,28 @@
             <h2 class="section-title">Portfolio</h2>
             <p>Check out some of my recent projects!</p>
             <div class="portfolio-grid">
-                <!-- Add your project images here -->
-                <div class="portfolio-item">
-                    <img src="images/project1.jpg" alt="Project 1">
-                    <p>Project Title 1</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/project2.jpg" alt="Project 2">
-                    <p>Project Title 2</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/project3.jpg" alt="Project 3">
-                    <p>Project Title 3</p>
-                </div>
-                <div class="portfolio-item">
-                    <img src="images/project4.jpg" alt="Project 4">
-                    <p>Project Title 4</p>
+                <?php
+                // Path to the folder where project images are stored
+                $projectFolder = 'uploads/projects/';
+                
+                // Check if the folder exists
+                if (is_dir($projectFolder)) {
+                    // Get all image files from the folder
+                    $images = glob($projectFolder . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+
+                    // Loop through and display each image
+                    foreach ($images as $image) {
+                        echo '<div class="portfolio-item">';
+                        echo '<img src="' . $image . '" alt="Project Image">';
+                        echo '<p>' . basename($image) . '</p>';
+                        echo '</div>';
+                    }
+                } else {
+                    echo '<p>No projects found. Please upload images to the "uploads/projects/" folder.</p>';
+                }
+                ?>
+                <div class="portfolio-item more-projects">
+                    <p>More projects coming soon...</p>
                 </div>
             </div>
         </div>

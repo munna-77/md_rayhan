@@ -3,39 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Sky Blue Calculator</title>
+    <title>MD RAYHAN - Graphic Designer Portfolio</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calculator">
-        <div class="display" id="display" aria-live="polite">0</div>
-        <div class="buttons">
-            <button class="btn btn-clear" id="clear">C</button>
-            <button class="btn btn-backspace" id="backspace">⌫</button>
-            <button class="btn btn-root" id="squareRoot">√</button>
-            <button class="btn btn-div" id="divide">/</button>
-
-            <button class="btn" id="seven">7</button>
-            <button class="btn" id="eight">8</button>
-            <button class="btn" id="nine">9</button>
-            <button class="btn btn-mul" id="multiply">*</button>
-
-            <button class="btn" id="four">4</button>
-            <button class="btn" id="five">5</button>
-            <button class="btn" id="six">6</button>
-            <button class="btn btn-sub" id="subtract">-</button>
-
-            <button class="btn" id="one">1</button>
-            <button class="btn" id="two">2</button>
-            <button class="btn" id="three">3</button>
-            <button class="btn btn-add" id="add">+</button>
-
-            <button class="btn btn-zero" id="zero">0</button>
-            <button class="btn btn-dot" id="dot">.</button>
-            <button class="btn btn-percent" id="percent">%</button>
-            <button class="btn btn-equal" id="equal">=</button>
+    <header class="header">
+        <div class="container">
+            <h1 class="glow-text">MD RAYHAN</h1>
+            <p class="subtitle">Creative Graphic Designer</p>
         </div>
-    </div>
-    <script src="script.js"></script>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                Hi, I'm <strong>MD RAYHAN</strong>, a passionate graphic designer dedicated to bringing creative ideas to life. I specialize in logo design, branding, and digital illustrations. Let's collaborate to create stunning visuals!
+            </p>
+        </div>
+    </section>
+
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title">Portfolio</h2>
+            <p>Check out some of my recent projects!</p>
+            <div class="portfolio-grid">
+                <!-- Add your project images here -->
+                <div class="portfolio-item">
+                    <img src="images/project1.jpg" alt="Project 1">
+                    <p>Project Title 1</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/project2.jpg" alt="Project 2">
+                    <p>Project Title 2</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/project3.jpg" alt="Project 3">
+                    <p>Project Title 3</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/project4.jpg" alt="Project 4">
+                    <p>Project Title 4</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <p>Feel free to reach out to me via email, phone, or check out my Freelancer profile!</p>
+            <ul class="contact-info">
+                <li>Email: <a href="mailto:rayhan.freelance77@gmail.com">rayhan.freelance77@gmail.com</a></li>
+                <li>Phone: <a href="tel:+8801782217777">+8801782217777</a></li>
+                <li>Freelancer: <a href="https://www.freelancer.com/u/raihanchch69" target="_blank">My Freelancer Profile</a></li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 MD RAYHAN. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 </html>

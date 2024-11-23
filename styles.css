@@ -1,130 +1,121 @@
+/* styles.css */
 body {
+    margin: 0;
     font-family: 'Arial', sans-serif;
+    background: linear-gradient(120deg, #0f0f3a, #1b1b52);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.header {
+    padding: 50px 20px;
+    background: linear-gradient(45deg, #6d09d6, #1d8eff);
+}
+
+.glow-text {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 20px #1d8eff, 0 0 40px #1d8eff;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.navbar {
+    background: #0b0b3e;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(to bottom, #87ceeb, #f0f8ff); /* Sky blue gradient background */
+    gap: 20px;
+}
+
+.navbar a {
+    color: #1d8eff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #6d09d6;
+}
+
+.section {
+    padding: 50px 20px;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1d8eff;
+    text-shadow: 0 0 10px #1d8eff;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.portfolio-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.portfolio-item img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.portfolio-item p {
+    color: #1d8eff;
+    font-weight: bold;
     margin: 0;
 }
 
-.calculator {
-    border-radius: 12px;
-    overflow: hidden;
-    width: 320px;
-    background: #fff; /* White background */
+.portfolio-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.contact-info li {
+    list-style: none;
+    margin: 10px 0;
+}
+
+.contact-info a {
+    color: #1d8eff;
+    text-decoration: none;
+}
+
+.footer {
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    position: relative;
-}
-
-.display {
-    background: #f0f8ff; /* Very light blue */
-    color: #000; /* Black text */
-    text-align: right;
-    padding: 20px;
-    font-size: 2.2em;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.buttons {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-.btn {
-    background: #e0f7fa; /* Light cyan */
-    border: none;
-    border-radius: 8px;
-    font-size: 1.5em;
-    padding: 15px;
-    cursor: pointer;
-    transition: background 0.2s, box-shadow 0.2s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.btn:hover {
-    background: #b2ebf2; /* Lighter cyan on hover */
-}
-
-.btn:active {
-    background: #80deea; /* Even darker cyan on click */
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.btn-zero {
-    grid-column: span 2;
-}
-
-.btn-clear {
-    background: #ff5252; /* Red */
-    color: #fff;
-}
-
-.btn-backspace {
-    background: #ffca28; /* Orange */
-    color: #fff;
-}
-
-.btn-root {
-    background: #007aff; /* Blue */
-    color: #fff;
-}
-
-.btn-div, .btn-mul, .btn-sub, .btn-add {
-    background: #9575cd; /* Purple */
-    color: #fff;
-}
-
-.btn-equal {
-    background: #4caf50; /* Green */
-    color: #fff;
-    grid-column: span 4; /* Make equal button span across the whole width */
-}
-
-.btn-equal:hover {
-    background: #388e3c; /* Darker green */
-}
-
-.btn-equal:active {
-    background: #2e7d32; /* Even darker green */
-}
-
-.btn-percent {
-    background: #ffee58; /* Yellow */
-    color: #000;
-}
-
-.btn-dot {
-    background: #b0bec5; /* Light grey */
-    color: #fff;
-}
-
-/* Focus State for Accessibility */
-.btn:focus {
-    outline: 2px solid #007aff;
-    outline-offset: 2px;
-}
-
-/* Responsive Design */
-@media (max-width: 400px) {
-    .calculator {
-        width: 100%;
-        padding: 10px;
-    }
-    .btn {
-        font-size: 1.2em;
-        padding: 10px;
-    }
-    .display {
-        font-size: 1.8em;
-    }
+    background: #0b0b3e;
+    text-align: center;
+    font-size: 0.9rem;
 }

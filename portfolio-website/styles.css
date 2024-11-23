@@ -136,48 +136,53 @@ body {
 
 .portfolio-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
-.portfolio-item:hover img {
-    transform: scale(1.05);
-}
-
+/* More Projects */
 .more-projects {
-    font-size: 1.3rem;
-    color: #666;
-    margin-top: 40px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.more-projects p {
+    font-weight: bold;
+    color: #ff7f50;
 }
 
 /* Contact Section */
 .contact {
-    padding: 60px 20px;
     background-color: #fff;
+    padding: 50px 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .contact-info {
     list-style: none;
-    margin: 20px auto;
-    max-width: 600px;
-    text-align: left;
+    padding: 0;
+}
+
+.contact-info li {
+    font-size: 1.2rem;
+    margin: 10px 0;
 }
 
 .contact-info a {
     color: #ff7f50;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s;
 }
 
 .contact-info a:hover {
-    color: #ff4500;
+    text-decoration: underline;
 }
 
 /* Footer */
 .footer {
     background: #111;
     color: #fff;
-    padding: 20px;
+    padding: 20px 0;
     text-align: center;
-    font-size: 1rem;
+    font-size: 0.9rem;
 }

@@ -55,22 +55,24 @@
             <div class="portfolio-grid">
                 <?php
                 // Path to the folder where project images are stored
-                $projectFolder = 'uploads/projects/';
+                $imageFolder = 'images/';
                 
                 // Check if the folder exists
-                if (is_dir($projectFolder)) {
-                    // Get all image files from the folder
-                    $images = glob($projectFolder . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
+                if (is_dir($imageFolder)) {
+                    // Get all image files from the folder (both profile and project images)
+                    $images = glob($imageFolder . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
 
-                    // Loop through and display each image
+                    // Loop through and display each image, skipping the profile photo
                     foreach ($images as $image) {
-                        echo '<div class="portfolio-item">';
-                        echo '<img src="' . $image . '" alt="Project Image">';
-                        echo '<p>' . basename($image) . '</p>';
-                        echo '</div>';
+                        if (basename($image) != 'profile.jpg') { // Skip profile image
+                            echo '<div class="portfolio-item">';
+                            echo '<img src="' . $image . '" alt="Project Image">';
+                            echo '<p>' . basename($image) . '</p>';
+                            echo '</div>';
+                        }
                     }
                 } else {
-                    echo '<p>No projects found. Please upload images to the "uploads/projects/" folder.</p>';
+                    echo '<p>No projects found. Please upload images to the "images/" folder.</p>';
                 }
                 ?>
                 <div class="portfolio-item more-projects">

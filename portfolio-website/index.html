@@ -51,22 +51,21 @@
         <div class="container">
             <h2>Portfolio</h2>
             <div class="portfolio-grid">
-                <?php
-                $imageFolder = 'images/';
-                if (is_dir($imageFolder)) {
-                    $images = glob($imageFolder . "*.{jpg,jpeg,png,gif}", GLOB_BRACE);
-                    foreach ($images as $image) {
-                        if (basename($image) !== 'profile.jpg') {
-                            echo '<div class="portfolio-item">';
-                            echo '<img src="' . $image . '" alt="Project">';
-                            echo '<p>' . basename($image) . '</p>';
-                            echo '</div>';
-                        }
-                    }
-                } else {
-                    echo '<p>No projects found. Add images to the "images/" folder.</p>';
-                }
-                ?>
+                <!-- Manually List Project Images Here -->
+                <div class="portfolio-item">
+                    <img src="images/projectfile1.jpg" alt="Project 1">
+                    <p>Project 1</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/projectfile2.jpg" alt="Project 2">
+                    <p>Project 2</p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="images/projectfile3.jpg" alt="Project 3">
+                    <p>Project 3</p>
+                </div>
+
+                <!-- Placeholder for future projects -->
                 <div class="portfolio-item more-projects">
                     <p>More projects coming soon...</p>
                 </div>
